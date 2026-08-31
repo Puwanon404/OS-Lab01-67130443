@@ -1,0 +1,29 @@
+======================================================
+COE67-222 Operating Systems - Lab 03 Report
+Name: ภูวนนท์ หะยะมิน
+Student ID: 67130443
+======================================================
+
+1. The Race Condition (Phase 2):
+In the `race_condition.py` script, what exactly causes the final weight to be less than the expected value? Explain the role of the OS Scheduler in this error.
+
+Race Condition เกิดจากหลาย Thread ใช้ shared_weight ร่วมกัน ทำให้การอ่านและเขียนค่าทับกัน เมื่อ 
+OS Scheduler สลับ Thread ระหว่างการทำงาน จึงทำให้ค่าจริงน้อยกว่าค่าที่คาดไว้
+
+2. Mutex vs. Semaphore (Phase 3):
+In `producer_consumer.py`:
+- What is the specific job of the `mutex`? mutex ใช้ป้องกันไม่ให้หลาย Thread เข้าถึง Buffer พร้อมกัน
+- What is the specific job of the `empty` and `full` semaphores?  empty ใช้นับช่องว่าง และ full ใช้นับข้อมูลใน Buffer จึงไม่สามารถใช้ Mutex แทนทั้งหมดได้
+(Why can't we just use a Mutex for everything?)
+
+เพราะ Mutex ใช้สำหรับควบคุมการเข้าถึง Critical Section แต่ไม่สามารถใช้เพื่อนับจำนวนช่องว่างหรือจำนวนข้อมูลใน Buffer 
+ได้ จึงต้องใช้ Semaphore (empty และ full) ร่วมด้วย
+
+3. Deadlock Awareness:
+In the Producer function, we wrote:
+    empty.acquire()
+    mutex.acquire()
+What would happen if we swapped these two lines? (mutex first, then empty). Imagine the buffer is completely full. Explain the potential OS problem.
+
+เพราะ Mutex ใช้สำหรับควบคุมการเข้าถึง Critical Section 
+แต่ไม่สามารถใช้เพื่อนับจำนวนช่องว่างหรือจำนวนข้อมูลใน Buffer ได้ จึงต้องใช้ Semaphore (empty และ full) ร่วมด้วย
