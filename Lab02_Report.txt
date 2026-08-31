@@ -1,0 +1,37 @@
+======================================================
+COE67-222 Operating Systems - Lab 02 Report
+Name: ภูวนนท์ หะยะมิน
+Student ID: 67130443
+======================================================
+
+1. Execution Time Comparison:
+- Sequential Time: [9.28] seconds
+- Multithreading Time: [9.89] seconds
+- Multiprocessing Time: [8.28] seconds
+
+2. System Observation (htop):
+Explain the difference in CPU core utilization (in htop)
+when running the Multithreading script vs.
+the Multiprocessing script.
+
+เมื่อรันโปรแกรมแบบ Multithreading พบว่าการใช้งาน CPU
+ไม่ได้กระจายไปยัง CPU core ทั้งหมดอย่างมีประสิทธิภาพ
+เนื่องจาก Python มี Global Interpreter Lock
+ในขณะที่การรันแบบ Multiprocessing สามารถใช้ CPU หลาย core
+พร้อมกันได้ เนื่องจากแต่ละ Process มี GIL เป็นของตัวเอง
+ทำให้ OS สามารถกระจายงานไปยัง CPU cores หลายตัวได้
+
+3. Analysis (The GIL):
+Based on your results, why did Multithreading fail
+to make the code run faster?
+
+Multithreading ไม่สามารถทำให้โปรแกรมเร็วขึ้น
+เพราะ Python มี GIL ซึ่งทำให้หลาย Threads ไม่สามารถประมวลผล Python bytecode
+พร้อมกันได้อย่างมีประสิทธิภาพ สำหรับงานที่ใช้ CPU หนัก
+
+Why is Multiprocessing a better choice for CPU-bound
+tasks (like Machine Learning data augmentation) in Python?
+
+Multiprocessing เหมาะกับงาน CPU-bound มากกว่า เพราะแต่ละ Process มี GIL เป็นของตัวเอง 
+ทำให้หลาย Process สามารถทำงานพร้อมกันบน CPU cores หลายตัวได้ จึงสามารถใช้ CPU 
+ได้อย่างมีประสิทธิภาพและช่วยลดเวลาในการประมวลผล
