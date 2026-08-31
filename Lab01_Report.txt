@@ -1,16 +1,16 @@
 ======================================================
 COE67-XXX Operating Systems - Lab 01 Report
-Name: 
-Student ID: 
+Name: ภูวนนท์ หะยะมิน
+Student ID: 67130443
 ======================================================
 
 1. Hardware Baseline:
-- OS Version:
-- Number of CPU Cores:
-- Total RAM:
+- OS Version: Ubuntu Linux
+- Number of CPU Cores: 2 Cores
+- Total RAM: 7.8Gi
 
 2. Observation (from htop during stress test):
-[Write your answer here]
+[ใช้ทุก core]
 
 3. Analysis:
-[Write your answer here]
+[Dataset มีขนาดใหญ่ ถ้าโหลดข้อมูลทั้งหมดเข้า RAM อาจทำให้หน่วยความจำไม่เพียงพอ ส่วน CPU มีหน้าที่เตรียมและประมวลผลรูปก่อนส่งเข้าโมเดล ถ้า CPU ทำงานไม่ทัน จะทำให้การเทรนช้าลง]
